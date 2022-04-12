@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="h1">
+            LUMPSUM CALCULATOR
+        </div>
+        <div class="card mb-3" style="max-width: 1340px;">
+            <div class="row g-0">
+              <div class="col-md-8 ml-5">
+
+
+              
+                 <input type="radio" value="1" style="margin-left:30px; margin-top:30px" name="ra" id="r1" onchange="f1()" checked><label for="r1" style="padding-right: 26px;" style="padding-left: 9px;"> I want to invest</label>
+                 <input type="radio" value="2" name="ra" id="r2" onselect="f2()" ><label for="r2" style="padding-left: 9px;"  onchange="f1()"> I know my goal</label><br><br>
+
+
+
+
+                        
+                <div class="row"  id="in1" >
+                    <div class="col-sm-8"><label class="form-label" for="pr">I wish to invest</label></div>
+                    <div class="col-sm-4"><h5 id="func1"></h5></div>
+                   <div class="row">
+                       <div class="col"><input type="range" class="form-range"  id="pr" min="10000" max="10000000"  onchange="fun()"></div>
+                    
+                   </div>
+                </div>
+
+
+                <div class="row" id="in2" style="display: none;">
+                    <div class="col-sm-8"><label class="form-label" for="pr"  id="in2" >I need Rs.</label></div>
+                    <div class="col-sm-4"><h5 id="func1"></h5></div>
+                    <div class="row"  id="in2"  style="display: none;">
+                        <input type="range" class="form-range"  id="pr" min="50000" max="50000000"  onchange="fun1()">
+                    </div>
+                </div>
+                <br><br>
+
+
+
+
+
+                <div class="row">
+                    <div class="col-sm-8"><label class="form-label" for="year">No.of Years</label></div>
+                    <div class="col-sm-4"><h5 id="func2"></h5></div>
+                </div>
+                <input type="range" class="form-range"  id="year" min="1" max="30" onchange="fun()"><br><br>
+                <div class="row">
+                    <div class="col-sm-8"><label class="form-label" for="rate">Excpted rate of return</label></div>
+                    <div class="col-sm-4"><h5 id="func3"></h5></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="range" class="form-range"  id="rate" min="8" max="15" onchange="fun()" onchange="fun1()">
+                    </div>
+                </div><br><br><br>
+                <a href="#">view disclaimer</a><br><br><br>
+                
+              </div>
+              <div class="col-md-4 bg-light pt-5">
+                <div class="card-body text-center mt-4">
+                    <h2>Resultant Amount</h2>
+                    <h3 id="result"  style="color: red;"></h3>
+                    <button type="button"  class="btn btn-primary mt-4" onclick="fun()">Invest now !</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <script>
+        function f1(){
+            if((document.getElementById("ra").checked)==true){
+                document.getElementById("in2").style.display="none";
+                document.getElementById("in1").style.display="block";
+
+                
+            }
+        }
+        function f2(){
+            if((document.getElementById("ra").checked)==true){
+                document.getElementById("in1").style.display="none";
+                document.getElementById("in2").style.display="block";
+                
+            }
+        }
+        function fun(){
+            let n=2;
+            let r=parseFloat(document.getElementById("rate").value);
+            let t=parseFloat(document.getElementById("year").value);
+
+            if(document.getElementById("ra")==1){
+                let v1=parseInt(document.getElementById("pr").value);
+                document.getElementById("func1").innerHTML="Rs."+v1;
+                let v2=parseInt(document.getElementById("year").value);
+                document.getElementById("func2").innerHTML=v2+" years";
+                let v3=parseInt(document.getElementById("rate").value);
+                document.getElementById("func3").innerHTML=v3+"%"; 
+                let p=parseInt(document.getElementById("pr").value);
+                let a=p*((1+(r/2))**(2/t));
+                document.getElementById("result").innerHTML='₹ '+parseInt(a);
+            }
+            else{
+                let a=parseFloat(document.getElementById("pr").value);
+                let p=a/((1+(r/2))**(2/t));
+                document.getElementById("result").innerHTML='₹'+parseInt(p);
+
+            }
+            
+            
+
+        }
+        function fun1(){
+            let v1=parseInt(document.getElementById("pr").value);
+            document.getElementById("func1").innerHTML="Rs."+v1; 
+        }
+        function fun2(){
+            let v1=parseInt(document.getElementById("year").value);
+            document.getElementById("func2").innerHTML=v1+" years"; 
+        }
+        function fun3(){
+            let v1=parseInt(document.getElementById("rate").value);
+            document.getElementById("func3").innerHTML=v1+"%"; 
+        }
+
+    </script>
+</body>
+</html>
