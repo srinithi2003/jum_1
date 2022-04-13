@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="h1">
+        <div class="h1 mt-4">
             LUMPSUM CALCULATOR
         </div>
         <div class="card mb-3" style="max-width: 1340px;">
@@ -64,22 +64,14 @@
             let r=parseFloat(document.getElementById("rate").value);
             let t=parseFloat(document.getElementById("year").value);
             let a=parseFloat(document.getElementById("pr").value);
+            document.getElementById("func1").innerHTML="Rs."+a;
+            document.getElementById("func2").innerHTML=t+" years";
+            document.getElementById("func3").innerHTML=r+"%";
             let p=a/((1+(r/2))**(2/t));
             document.getElementById("result").innerHTML='₹'+parseInt(p);
 
         }
-        function fun1(){
-            let v1=parseInt(document.getElementById("pr").value);
-            document.getElementById("func1").innerHTML="Rs."+v1; 
-        }
-        function fun2(){
-            let v1=parseInt(document.getElementById("year").value);
-            document.getElementById("func2").innerHTML=v1+" years"; 
-        }
-        function fun3(){
-            let v1=parseInt(document.getElementById("rate").value);
-            document.getElementById("func3").innerHTML=v1+"%"; 
-        }
+    
 
     </script>
 </body>
