@@ -75,6 +75,8 @@
               </div>
               <div class="col-md-4 bg-light pt-5">
                 <div class="card-body text-center mt-4">
+                    <h2>Invested Amount</h2>
+                    <h3 id="result1"  style="color: red;"></h3>
                     <h2>Resultant Amount</h2>
                     <h3 id="result"  style="color: red;"></h3>
                     <button type="button"  class="btn btn-primary mt-4" onclick="fun()">Invest now !</button>
@@ -111,7 +113,7 @@
                 document.getElementById("func2").innerHTML=t+" years";
             
                 document.getElementById("func3").innerHTML=r+"%"; 
-                
+                document.getElementById("result1").innerHTML='₹ '+p;
                 let a=p*((1+(r/2))**(2/t));
                 document.getElementById("result").innerHTML='₹ '+parseInt(a);
           //  }
